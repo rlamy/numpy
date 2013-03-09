@@ -17,7 +17,7 @@ __all__ = ['matrix_power', 'solve', 'tensorsolve', 'tensorinv', 'inv',
            'LinAlgError']
 
 from numpy.core import array, asarray, zeros, empty, transpose, \
-        intc, single, double, csingle, cdouble, inexact, complexfloating, \
+        intc, single, double, cdouble, inexact, complexfloating, \
         newaxis, ravel, all, Inf, dot, add, multiply, identity, sqrt, \
         maximum, flatnonzero, diagonal, arange, fastCopyAndTranspose, sum, \
         isfinite, size, finfo, absolute, log, exp
@@ -75,12 +75,12 @@ def isComplexType(t):
 
 _real_types_map = {single : single,
                    double : double,
-                   csingle : single,
+                   #csingle : single,
                    cdouble : double}
 
-_complex_types_map = {single : csingle,
+_complex_types_map = {#single : csingle,
                       double : cdouble,
-                      csingle : csingle,
+                      #csingle : csingle,
                       cdouble : cdouble}
 
 def _realType(t, default=double):
@@ -92,11 +92,6 @@ def _complexType(t, default=cdouble):
 def _linalgRealType(t):
     """Cast the type t to either double or cdouble."""
     return double
-
-_complex_types_map = {single : csingle,
-                      double : cdouble,
-                      csingle : csingle,
-                      cdouble : cdouble}
 
 def _commonType(*arrays):
     # in lite version, use higher precision (always double or cdouble)

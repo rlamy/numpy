@@ -1,7 +1,7 @@
 from __future__ import division
 
-__all__ = ['ravel_multi_index',
-           'unravel_index',
+__all__ = [#'ravel_multi_index',
+           #'unravel_index',
            'mgrid',
            'ogrid',
            'r_', 'c_', 's_',
@@ -555,7 +555,7 @@ class ndindex(object):
             return zero_dim_iter()
         else:
             return super(ndindex, cls).__new__(cls)
-            
+
     def __init__(self, *shape):
         if len(shape) == 1 and isinstance(shape[0], tuple):
             shape = shape[0]
@@ -564,7 +564,7 @@ class ndindex(object):
 
     def __iter__(self):
         return self
-        
+
     def ndincr(self):
         """
         Increment the multi-dimensional index by one.
