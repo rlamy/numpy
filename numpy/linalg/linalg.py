@@ -65,7 +65,7 @@ class LinAlgError(Exception):
 
 def _makearray(a):
     new = asarray(a)
-    wrap = getattr(a, "__array_prepare__", new.__array_wrap__)
+    wrap = a
     return new, wrap
 
 def isComplexType(t):
