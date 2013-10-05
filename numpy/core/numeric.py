@@ -148,7 +148,7 @@ def ones(shape, dtype=None, order='C'):
     #a = empty(shape, dtype, order)
     #multiarray.copyto(a, 1, casting='unsafe')
     #return a
-    return multiarray.ones(shape, dtype, order)
+    return multiarray.ones(shape, dtype=dtype, order=order)
 
 def ones_like(a, dtype=None, order='K', subok=True):
     """
