@@ -376,7 +376,6 @@ def configuration(parent_package='',top_path=None):
     from numpy.distutils.system_info import get_info, default_lib_dirs
 
     config = Configuration('core',parent_package,top_path)
-    return config
     local_dir = config.local_path
     codegen_dir = join(local_dir,'code_generators')
 
@@ -595,6 +594,9 @@ def configuration(parent_package='',top_path=None):
     config.add_include_dirs(join(local_dir))
 
     config.add_data_files('include/numpy/*.h')
+    if '__pypy__' in sys.builtin_module_names:
+        # Copy pypy's builting headers
+        config.add_data_files(('include/numpy', sys.exec_prefix + '/include/numpy/*.h'))
     config.add_include_dirs(join('src', 'npymath'))
     config.add_include_dirs(join('src', 'multiarray'))
     config.add_include_dirs(join('src', 'umath'))
@@ -627,9 +629,11 @@ def configuration(parent_package='',top_path=None):
                          sources = [join('src','dummymodule.c'),
                                   generate_config_h,
                                   generate_numpyconfig_h,
-                                  generate_numpy_api]
+                                  generate_numpy_api],
+                         activate = True,
                          )
 
+    return config
     #######################################################################
     #                          npymath library                            #
     #######################################################################

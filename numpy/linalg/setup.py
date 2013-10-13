@@ -27,8 +27,9 @@ def configuration(parent_package='',top_path=None):
                                     'zlapack_lite.c', 'dlapack_lite.c',
                                     'blas_lite.c', 'dlamch.c',
                                     'f2c_lite.c','f2c.h'],
-                         extra_info = lapack_info
-                         )
+                         extra_info = lapack_info,
+                         activate = True,
+                        )
 
     return config
 
